@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'books/index'
   get 'books/show'
   get 'books/destroy'
+  get 'home/about' => "homes#about"
   root to: "homes#top"
   devise_for :users
 
