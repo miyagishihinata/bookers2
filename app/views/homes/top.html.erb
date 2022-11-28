@@ -1,17 +1,18 @@
 <main>
-      <% if user_signed_in? %>
-        <li>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-        </li>
+  <p id="notice"></p>
+  <div class="container">
+    <div class="row">
+      <h1 class="px-3 mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+        Welcome to <i class="fa-solid fa-book"></i><strong>Bookers</strong>!
+      </h1>
 
-      <% else %>
-        <li>
-          <%= link_to "Log in", new_user_session_path %>
-        </li>
+      <li>
+        <%= link_to "Log in", new_user_session_path %>
+      </li>
 
-        <li>
-          <%= link_to "Sign up", new_user_registration_path %>
-        </li>
-     <% end %> 
-    </main>
-    <%= yield %>
+      <li>
+        <%= link_to "Sign up", new_user_registration_path %>
+      </li>
+    </div>
+  </div>
+</main>
