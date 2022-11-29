@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'users/edit' => 'users#edit'
-  get 'users/show' => 'users#show'
+  get 'users/show' => 'users#show', as:'show'
 
   get 'books/new'
   get 'books/index'
