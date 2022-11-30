@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   get 'users/edit' => 'users#edit'
-  get 'users/show' => 'users#show'
+  get 'users/' => 'users#show', as:'users'
+
+
+  get 'books/' => 'books#index', as:'books'
+  post 'books/create' => 'books#create'
 
   get 'books/new'
-  get 'books/index', as:'index'
-  post 'books' => 'books#create'
-
   get 'books/show'
   get 'books/destroy'
+
   get 'home/about' => "homes#about", as:'about'
   root to: "homes#top", as:'homes'
   devise_for :users

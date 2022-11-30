@@ -4,12 +4,13 @@ class BooksController < ApplicationController
   end
 
   def create
-    book = Book.new(book_parms)
-    book.save
-    redirect_to '/books/index'
+    @book = Book.new(book_parms)
+    @book.save
+    redirect_to index
   end
 
   def index
+    @books = Book.all
   end
 
   def show
@@ -19,7 +20,8 @@ class BooksController < ApplicationController
   end
 
   private
-  def book_parms
+
+  def book_params
     params.require(:book).permit(:title, :body)
   end
 
