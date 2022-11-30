@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   get 'users/edit' => 'users#edit'
   get 'users/show' => 'users#show'
-  get 'users/index' => 'users#index', as:'index'
 
   get 'books/new'
-  get 'books/index'
+  get 'books/index', as:'index'
+  post 'books' => 'books#create'
+
   get 'books/show'
   get 'books/destroy'
   get 'home/about' => "homes#about", as:'about'
