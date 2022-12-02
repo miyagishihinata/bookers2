@@ -57,9 +57,23 @@
                   <tr>
                     <% @books.each do |book| %>
                     <td>
-                      <%= book.title %>
+
+　　　　　　　        <%= image_tag book.user.get_profile_image(100,100) %><br>
+
+　　　　　　　      </td>
+                    <td>
+                      <%= link_to book_path(book.id) do %>
+                       <%= book.title %>
+                      <% end %>
                     </td>
-                    <% end %
+                    <td>
+                      <%= book.body %>
+                    </td>
+                    <% end %>
+                    <td>
+                      <%= link_to "Destroy", destroy_book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+                    </td>
+
                   </tr>
 　　　　　　　  </tbody>
 　　　　　　　</table>
