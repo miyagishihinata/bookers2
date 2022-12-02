@@ -7,4 +7,10 @@ class UsersController < ApplicationController
 
   def edit
   end
+
+  def index
+    @user = User.find(params[:id])
+    @books = @user.books
+
+  end
 end
