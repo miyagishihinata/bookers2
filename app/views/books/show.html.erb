@@ -5,7 +5,7 @@
 
       <div class="col-md-3">
         <h2>User info</h2>
-
+        <%= image_tag @user.get_profile_image(100,100) %>
 
           <table class="table">
             <tbody>
@@ -13,7 +13,7 @@
 
               <tr>
                 <th>name</th>
-                <th></th>
+                <th><%= @user.name %></th>
               </tr>
 
               <tr>
@@ -51,32 +51,33 @@
       </div>
 
             <div class="col-md-8 offset-md-1">
-　　　　　　　<h2>Book detail</h2>
-　　　　　　　<table class="table">
-　　　　　　　  <tbody>
+              <h2>Book detail</h2>
+              <table class="table">
+                <tbody>
                   <tr>
-                    <% @books.each do |book| %>
                     <td>
-
-　　　　　　　        <%= image_tag book.user.get_profile_image(100,100) %><br>
-
-　　　　　　　      </td>
-                    <td>
-                      <%= link_to book_path(book.id) do %>
-                       <%= book.title %>
+                      <%= link_to user_path(@book.user.id) do %>
+                       <%= image_tag @book.user.get_profile_image(100,100) %><br>
+                       <%= @book.user.name %>
                       <% end %>
                     </td>
                     <td>
-                      <%= book.body %>
+                      <%= link_to book_path(@book.id) do %>
+                       <%= @book.title %>
+                      <% end %>
                     </td>
-                    <% end %>
                     <td>
-                      <%= link_to "Destroy", destroy_book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+                      <%= @book.body %>
+                    </td>
+                    <td>
+                    <%if @book.user == current_user %>
+                       <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
+                    <% end %>
                     </td>
 
                   </tr>
-　　　　　　　  </tbody>
-　　　　　　　</table>
+                </tbody>
+              </table>
             </div>
 
     </div>
