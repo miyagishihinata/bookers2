@@ -6,11 +6,24 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update(book_params)
+    redirect_to user_path(book.id)
   end
 
   def index
-    @user = User.find(params[:id])
+    @users = User.all
     @books = @user.books
 
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :profile_image, :introduction)
   end
 end
