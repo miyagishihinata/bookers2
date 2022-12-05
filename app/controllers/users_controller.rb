@@ -6,6 +6,11 @@ class UsersController < ApplicationController
   end
 
   def edit
+    user_id = params[:id].to_i
+    login_user_id = current_user_id
+    if(user_id!= login_user_id)
+      redirect_to users_path
+    end
     @user = User.find(params[:id])
   end
 
@@ -17,7 +22,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @user = User.find(params[:id])
     @books = @user.books
 
   end
