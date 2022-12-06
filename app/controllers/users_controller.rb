@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def edit
     user_id = params[:id].to_i
-    login_user_id = current_user_id
+    login_user_id = current_user.id
     if(user_id!= login_user_id)
       redirect_to users_path
     end
