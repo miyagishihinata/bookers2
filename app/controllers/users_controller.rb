@@ -1,16 +1,9 @@
 class UsersController < ApplicationController
-  def create
-    @user = User.new(user_params)
-    @user.save
-    flash[:notice] =  "Welcome! You have signed up successfully."
-    redirect_to login_path
-  end
+  
 
   def show
     @user = User.find(params[:id])
     @books = @user.books
-    flash[:notice] = "Signed in successfully."
-
   end
 
   def edit
